@@ -1,48 +1,44 @@
-# ML Project: Basketball Player Performance Analysis
+# Machine Learning Project: Basketball Performance Prediction
 
 ## Overview
-This project uses machine learning techniques to analyze basketball player performance based on various features. The model is trained using decision trees and other machine learning techniques to classify player performance and predict future trends.
+This project applies machine learning techniques to analyze and predict basketball player performance based on various features. Multiple classification models are trained and evaluated to determine the best approach for predicting player outcomes.
 
 ## Features of the Code
-1. **Data Preprocessing**
-   - The dataset is loaded and cleaned.
-   - Features like height, weight, nationality, draft position, and player statistics are considered.
-   - Unnecessary columns such as season are removed.
-   
-2. **Feature Engineering**
-   - Players' performance data is grouped by key attributes.
-   - The number of seasons per player is calculated to reflect their playing tenure.
-   
-3. **Machine Learning Model**
-   - A **Decision Tree Classifier** is used to predict player performance.
-   - The dataset is split into training and testing sets using **train_test_split** with stratification.
-   - The model is trained on the training set and evaluated on the test set.
-   
-4. **Evaluation Metrics**
-   - The **classification report** is generated, including precision, recall, F1-score, and accuracy.
-   - Confusion matrix analysis is performed to assess model performance.
+### 1. **Data Preprocessing**
+- Loads basketball player performance data into a **Pandas DataFrame**.
+- Identifies **categorical** and **numerical** features.
+- Handles missing values using **imputation techniques** or by removing incomplete rows.
+- Filters out unnecessary columns to improve model efficiency.
 
-## How to Run
-1. Install required dependencies:
-   ```bash
-   pip install numpy pandas scikit-learn
-   ```
-2. Run the Jupyter Notebook:
-   ```bash
-   jupyter notebook ML-Project(Basketball).ipynb
-   ```
-3. Execute the cells in order to preprocess data, train the model, and evaluate results.
+### 2. **Exploratory Data Analysis (EDA)**
+- Uses **Seaborn** and **Matplotlib** to visualize data distributions.
+- **Count plots** are used to analyze categorical variables (e.g., team, position, nationality).
+- **Histograms and box plots** help in understanding the spread of numerical features (e.g., height, weight, points per game).
+- **Correlation heatmaps** determine relationships between numerical features and target labels.
 
-## Expected Output
-- A trained decision tree classifier that predicts player performance.
-- Classification report showing model accuracy and performance metrics.
-- Insights into player statistics based on basketball data.
+### 3. **Feature Engineering**
+- Encodes categorical variables using **one-hot encoding** or **label encoding**.
+- Normalizes numerical features to ensure better performance in models like **SVM and KNN**.
+- Creates new meaningful features, such as **BMI, experience years, efficiency rating**, etc.
+- Drops highly correlated features to prevent redundancy in model training.
 
-## Next Steps
-- Improve model performance by tuning hyperparameters (e.g., max_depth, min_samples_split).
-- Experiment with other ML models like RandomForest or SVM.
-- Enhance data preprocessing and feature selection.
+### 4. **Machine Learning Models**
+The following classification models are implemented and compared:
+- **Logistic Regression**: Simple and interpretable model for binary classification.
+- **Random Forest Classifier**: An ensemble learning method that improves accuracy by combining multiple decision trees.
+- **Support Vector Machine (SVM)**: Finds the optimal hyperplane to separate classes.
+- **Decision Tree Classifier**: A tree-based model that works well with categorical and numerical data.
+- **K-Nearest Neighbors (KNN)**: A distance-based classifier that predicts based on closest neighbors.
+- **Naïve Bayes Classifier**: Assumes independence among predictors; useful for categorical data.
+- **AdaBoost Classifier**: A boosting algorithm that improves weak classifiers.
+- **Gradient Boosting Classifier**: Another boosting technique that optimizes classification performance over multiple iterations.
 
----
-**Author:** ofer ashkenazy
-**Date:** 05-03-2025
+### 5. **Model Training & Evaluation**
+- Splits the dataset into **training (80%)** and **testing (20%)** subsets using `train_test_split`.
+- Trains all models using **Scikit-Learn**.
+- Evaluates models using:
+  - **Accuracy Score**: Percentage of correct predictions.
+  - **Classification Report**: Includes **Precision, Recall, F1-score, and Support** for each class.
+  - **Confusion Matrix**: Displays true positives, false positives, false negatives, and true negatives.
+- Compares performance across models and selects the best one based on metrics.
+
